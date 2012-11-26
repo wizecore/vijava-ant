@@ -10,6 +10,12 @@ import com.vmware.vim25.mo.ServiceInstance;
 import com.vmware.vim25.mo.VirtualMachine;
 
 
+/**
+ * Shutdowns guest. All unsaved data will be lost.
+ * 
+ * @ant.task name="vmShutdown" category="vmShutdown"
+ * @author huksley
+ */
 public class VMShutdownTask extends AbstractVMTask {
 
 	String vm;
@@ -40,16 +46,15 @@ public class VMShutdownTask extends AbstractVMTask {
 			throw new BuildException(e);
 		}
 	}
-
-	/**
-	 * Getter for {@link VMShutdownTask#vm}.
-	 */
+	
 	public String getVm() {
 		return vm;
 	}
 
 	/**
-	 * Setter for {@link VMShutdownTask#vm}.
+	 * Virtual machine name to query for information.
+	 * 
+	 * @ant.required
 	 */
 	public void setVm(String vm) {
 		this.vm = vm;

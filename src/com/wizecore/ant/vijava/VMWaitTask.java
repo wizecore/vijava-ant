@@ -15,6 +15,12 @@ import com.vmware.vim25.mo.InventoryNavigator;
 import com.vmware.vim25.mo.ServiceInstance;
 import com.vmware.vim25.mo.VirtualMachine;
 
+/**
+ * Waits for some event for specified virtual machine.
+ * 
+ * @ant.task name="vmWait" category="vmWait"
+ * @author huksley
+ */
 public class VMWaitTask extends AbstractVMTask {
 	String vm;	
 	long timeout = 300000;
@@ -127,7 +133,9 @@ public class VMWaitTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMShutdownTask#vm}.
+	 * Virtual machine name to query for information.
+	 * 
+	 * @ant.required
 	 */
 	public void setVm(String vm) {
 		this.vm = vm;

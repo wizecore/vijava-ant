@@ -17,6 +17,11 @@ import com.vmware.vim25.mo.InventoryNavigator;
 import com.vmware.vim25.mo.ServiceInstance;
 import com.vmware.vim25.mo.VirtualMachine;
 
+/**
+ * Assigns information from virtual machine to properties specified.
+ * @ant.task name="vmInfo" category="vmInfo"
+ * @author huksley
+ */
 public class VMInfoTask extends AbstractVMTask {
 
 	String vm;	
@@ -98,7 +103,9 @@ public class VMInfoTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMPowerOnTask#vm}.
+	 * Virtual machine name to query for information.
+	 * 
+	 * @ant.required
 	 */
 	public void setVm(String vm) {
 		this.vm = vm;
@@ -112,7 +119,8 @@ public class VMInfoTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMInfoTask#ipaddress}.
+	 * Property to set to virtual machine IP address.
+	 * @ant.not-required
 	 */
 	public void setIpaddress(String ipaddress) {
 		this.ipaddress = ipaddress;
@@ -126,7 +134,8 @@ public class VMInfoTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMInfoTask#guestHostName}.
+	 * Property to set to virtual machine hostname.
+	 * @ant.not-required
 	 */
 	public void setGuestHostName(String guestHostName) {
 		this.guestHostName = guestHostName;
@@ -140,7 +149,8 @@ public class VMInfoTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMInfoTask#datastore}.
+	 * Property to set to virtual machine datastore.
+	 * @ant.not-required
 	 */
 	public void setDatastore(String datastore) {
 		this.datastore = datastore;
@@ -154,21 +164,24 @@ public class VMInfoTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMInfoTask#datastoreType}.
+	 * Filter for datastores.
+	 * @ant.not-required Default is sanfs.
 	 */
 	public void setDatastoreType(String datastoreType) {
 		this.datastoreType = datastoreType;
 	}
 
 	/**
-	 * Getter for {@link VMInfoTask#lastEvent}.
+	 * @ant.not-required
 	 */
 	public String getLastEvent() {
 		return lastEvent;
 	}
 
 	/**
-	 * Setter for {@link VMInfoTask#lastEvent}.
+	 * Property to set to virtual machine last event.
+	 * 
+	 * @ant.not-required
 	 */
 	public void setLastEvent(String lastEvent) {
 		this.lastEvent = lastEvent;

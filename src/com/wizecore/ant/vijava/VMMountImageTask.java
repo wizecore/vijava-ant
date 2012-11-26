@@ -24,6 +24,7 @@ import com.vmware.vim25.mox.VirtualMachineDeviceManager;
 /**
  * Requests power on of specified virtual machine.
  * 
+ * @ant.task name="vmMountImage" category="vmMountImage"
  * @author huksley
  */
 public class VMMountImageTask extends AbstractVMTask {

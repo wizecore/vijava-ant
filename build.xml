@@ -1,0 +1,44 @@
+<project default="build" basedir=".">
+	<property name="source.dir" value="src" />
+  	<property name="package.names" value="com.wizecore.ant.vijava" />
+  	<property name="templates.dir" value="lib/antdoclet/apache" />
+
+	<path id="doclet.classpath">
+		<pathelement path="build"/>
+		<fileset dir="lib">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="lib/antdoclet/lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<path id="dependency.classpath">
+		<fileset dir="lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="build">
+		<mkdir dir="doc/tasks"/>		
+		<copy todir="doc/tasks" overwrite="true">
+			<fileset dir="${templates.dir}/html/">
+				<exclude name="*.vm"/>
+			</fileset>
+		</copy>
+  	
+		<javadoc access="public" sourcepath="${source.dir}" destdir="doc/tasks" 
+			packagenames="${package.names}"
+            docletpathref="doclet.classpath"
+			classpathref="dependency.classpath"
+            source="1.6">
+			<doclet name="com.neuroning.antdoclet.AntDoclet">
+				<param name="-doctitle" value="vijava-ant" />
+				<param name="-templatesdir" value="${templates.dir}"/>
+				<param name="-templates" value="html/main.vm" />
+				<param name="-taskslibfile" value="lib/none.xml" />
+				<param name="-taskscategoryfile" value="lib/none.xml" />
+			</doclet>
+		</javadoc>
+	</target>
+</project>

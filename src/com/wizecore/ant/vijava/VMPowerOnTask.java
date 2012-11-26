@@ -12,8 +12,10 @@ import com.vmware.vim25.mo.VirtualMachine;
 /**
  * Requests power on of specified virtual machine.
  * 
+ * @ant.task name="vmPowerOn" category="vmPowerOn"
  * @author huksley
  */
+
 public class VMPowerOnTask extends AbstractVMTask {
 
 	String vm;
@@ -47,30 +49,27 @@ public class VMPowerOnTask extends AbstractVMTask {
 			throw new BuildException(e);
 		}
 	}
-
-	/**
-	 * Getter for {@link VMPowerOnTask#vm}.
-	 */
+	
 	public String getVm() {
 		return vm;
 	}
 
 	/**
-	 * Setter for {@link VMPowerOnTask#vm}.
+	 * Virtual machine name to query for information.
+	 * 
+	 * @ant.required
 	 */
 	public void setVm(String vm) {
 		this.vm = vm;
 	}
-
-	/**
-	 * Getter for {@link VMPowerOnTask#wait}.
-	 */
+	
 	public boolean isWait() {
 		return wait;
 	}
 
 	/**
-	 * Setter for {@link VMPowerOnTask#wait}.
+	 * Wait for task completion.
+	 * @ant.not-required Default is false.
 	 */
 	public void setWait(boolean wait) {
 		this.wait = wait;

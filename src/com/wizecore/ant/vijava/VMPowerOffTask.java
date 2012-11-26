@@ -12,6 +12,7 @@ import com.vmware.vim25.mo.VirtualMachine;
 /**
  * Request poweroff of specified virtual machine.
  * 
+ * @ant.task name="vmPowerOff" category="vmPowerOff"
  * @author huksley
  */
 public class VMPowerOffTask extends AbstractVMTask {
@@ -48,29 +49,26 @@ public class VMPowerOffTask extends AbstractVMTask {
 		}
 	}
 
-	/**
-	 * Getter for {@link VMPowerOffTask#vm}.
-	 */
 	public String getVm() {
 		return vm;
 	}
 
 	/**
-	 * Setter for {@link VMPowerOffTask#vm}.
+	 * Virtual machine name to query for information.
+	 * 
+	 * @ant.required
 	 */
 	public void setVm(String vm) {
 		this.vm = vm;
 	}
-
-	/**
-	 * Getter for {@link VMPowerOffTask#wait}.
-	 */
+	
 	public boolean isWait() {
 		return wait;
 	}
 
 	/**
-	 * Setter for {@link VMPowerOffTask#wait}.
+	 * Wait for task completion.
+	 * @ant.not-required Default is false.
 	 */
 	public void setWait(boolean wait) {
 		this.wait = wait;

@@ -9,7 +9,12 @@ import com.vmware.vim25.mo.InventoryNavigator;
 import com.vmware.vim25.mo.ServiceInstance;
 import com.vmware.vim25.mo.VirtualMachine;
 
-
+/**
+ * Suspends virtual machine.
+ * 
+ * @ant.task name="vmSuspend" category="vmSuspend"
+ * @author huksley
+ */
 public class VMSuspendTask extends AbstractVMTask {
 
 	String vm;
@@ -43,30 +48,27 @@ public class VMSuspendTask extends AbstractVMTask {
 			throw new BuildException(e);
 		}
 	}
-
-	/**
-	 * Getter for {@link VMSuspendTask#vm}.
-	 */
+	
 	public String getVm() {
 		return vm;
 	}
 
 	/**
-	 * Setter for {@link VMSuspendTask#vm}.
+	 * Virtual machine name to query for information.
+	 * 
+	 * @ant.required
 	 */
 	public void setVm(String vm) {
 		this.vm = vm;
 	}
-
-	/**
-	 * Getter for {@link VMSuspendTask#wait}.
-	 */
+	
 	public boolean isWait() {
 		return wait;
 	}
 
 	/**
-	 * Setter for {@link VMSuspendTask#wait}.
+	 * Wait for task completion.
+	 * @ant.not-required Default is false.
 	 */
 	public void setWait(boolean wait) {
 		this.wait = wait;

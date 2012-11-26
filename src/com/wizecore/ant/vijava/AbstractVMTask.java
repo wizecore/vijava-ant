@@ -19,6 +19,7 @@ import com.vmware.vim25.mo.ServiceInstance;
  * Abstract VM task.
  * Can be executed standalone or as part of &lt;vm&gt; set of tasks.
  * 
+ * @ant.task ignore="true"
  * @see VMTask
  * @author huksley
  */
@@ -26,14 +27,13 @@ public class AbstractVMTask extends Task {
 
 	protected final static Logger log = Logger.getLogger(AbstractVMTask.class.getName());
 	
-	VMTask parent;
-	String vcenter;
-	String host;
-	String username;
-	String password;
-	File credentialsFile = null;
-	boolean persistentConnection = true;
-	ServiceInstance serviceInstance = null;
+	protected VMTask parent;
+	protected String vcenter;
+	protected String host;
+	protected String username;
+	protected String password;
+	protected File credentialsFile = null;
+	protected ServiceInstance serviceInstance = null;
 	
 	public static boolean same(ManagedObject a, ManagedObject b) {
 		if (a == null || b == null) {
@@ -94,9 +94,7 @@ public class AbstractVMTask extends Task {
 		URL url = new URL("https://" + (vcenter != null ? vcenter : host) + "/sdk");
 		log.info("Connecting to " + url + " as " + username + ":***");
 		ServiceInstance si = new ServiceInstance(url, username, password, true);
-		if (persistentConnection) {
-			serviceInstance = si;
-		}
+		serviceInstance = si;
 		return si;
 	}
 
@@ -108,7 +106,8 @@ public class AbstractVMTask extends Task {
 	}
 
 	/**
-	 * Setter for {@link AbstractVMTask#vcenter}.
+	 * Virtual center to connect to. Either <code>vcenter</code> or <code>host</code> must be specified.
+	 * @ant.required
 	 */
 	public void setvcenter(String vcenter) {
 		this.vcenter = vcenter;
@@ -122,7 +121,8 @@ public class AbstractVMTask extends Task {
 	}
 
 	/**
-	 * Setter for {@link AbstractVMTask#host}.
+	 * Host to connect to. Either <code>vcenter</code> or <code>host</code> must be specified.
+	 * @ant.required
 	 */
 	public void setHost(String host) {
 		this.host = host;
@@ -136,7 +136,8 @@ public class AbstractVMTask extends Task {
 	}
 
 	/**
-	 * Setter for {@link AbstractVMTask#username}.
+	 * Username to connect as. Can be also specified using {@link #credentialsFile}.
+	 * @ant.required 
 	 */
 	public void setUsername(String username) {
 		this.username = username;
@@ -150,7 +151,8 @@ public class AbstractVMTask extends Task {
 	}
 
 	/**
-	 * Setter for {@link AbstractVMTask#password}.
+	 * Password for specified user. Can be also specified using {@link #credentialsFile}.
+	 * @ant.required
 	 */
 	public void setPassword(String password) {
 		this.password = password;
@@ -164,23 +166,10 @@ public class AbstractVMTask extends Task {
 	}
 
 	/**
-	 * Setter for {@link AbstractVMTask#credentialsFile}.
+	 * File with credentials. Must contain <code>username=</code> and <code>password=</code>
+	 * @ant.not-required
 	 */
 	public void setCredentialsFile(File credentialsFile) {
 		this.credentialsFile = credentialsFile;
 	}
-
-	/**
-	 * Getter for {@link AbstractVMTask#persistentConnection}.
-	 */
-	public boolean isPersistentConnection() {
-		return persistentConnection;
-	}
-
-	/**
-	 * Setter for {@link AbstractVMTask#persistentConnection}.
-	 */
-	public void setPersistentConnection(boolean persistentConnection) {
-		this.persistentConnection = persistentConnection;
-	};
 }

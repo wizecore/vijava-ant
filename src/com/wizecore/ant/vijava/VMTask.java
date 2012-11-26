@@ -12,8 +12,9 @@ import org.apache.tools.ant.UnknownElement;
 import com.vmware.vim25.mo.ServiceInstance;
 
 /**
- * Optional core for virtual machine tasks.
+ * Optional root for all virtual machine tasks.
  * 
+ * @ant.task name="VMTask" category="vm"
  * @author huksley
  */
 public class VMTask extends AbstractVMTask implements TaskContainer {

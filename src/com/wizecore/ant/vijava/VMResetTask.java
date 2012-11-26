@@ -10,6 +10,12 @@ import com.vmware.vim25.mo.ServiceInstance;
 import com.vmware.vim25.mo.VirtualMachine;
 
 
+/**
+ * Resets virtual machine. All unsaved data will be lost.
+ * 
+ * @ant.task name="vmReset" category="vmReset"
+ * @author huksley
+ */
 public class VMResetTask extends AbstractVMTask {
 
 	String vm;
@@ -43,30 +49,27 @@ public class VMResetTask extends AbstractVMTask {
 			throw new BuildException(e);
 		}
 	}
-
-	/**
-	 * Getter for {@link VMResetTask#vm}.
-	 */
+	
 	public String getVm() {
 		return vm;
 	}
 
 	/**
-	 * Setter for {@link VMResetTask#vm}.
+	 * Virtual machine name to query for information.
+	 * 
+	 * @ant.required
 	 */
 	public void setVm(String vm) {
 		this.vm = vm;
 	}
-
-	/**
-	 * Getter for {@link VMResetTask#wait}.
-	 */
+	
 	public boolean isWait() {
 		return wait;
 	}
 
 	/**
-	 * Setter for {@link VMResetTask#wait}.
+	 * Wait for task completion.
+	 * @ant.not-required Default is false.
 	 */
 	public void setWait(boolean wait) {
 		this.wait = wait;

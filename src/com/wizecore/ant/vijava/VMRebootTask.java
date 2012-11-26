@@ -9,7 +9,12 @@ import com.vmware.vim25.mo.InventoryNavigator;
 import com.vmware.vim25.mo.ServiceInstance;
 import com.vmware.vim25.mo.VirtualMachine;
 
-
+/**
+ * Reboots virtual machine. Asks tools to reboot guest OS.
+ * 
+ * @ant.task name="vmReboot" category="vmReboot"
+ * @author huksley
+ */
 public class VMRebootTask extends AbstractVMTask {
 
 	String vm;
@@ -41,15 +46,14 @@ public class VMRebootTask extends AbstractVMTask {
 		}
 	}
 
-	/**
-	 * Getter for {@link VMRebootTask#vm}.
-	 */
 	public String getVm() {
 		return vm;
 	}
 
 	/**
-	 * Setter for {@link VMRebootTask#vm}.
+	 * Virtual machine name to query for information.
+	 * 
+	 * @ant.required
 	 */
 	public void setVm(String vm) {
 		this.vm = vm;

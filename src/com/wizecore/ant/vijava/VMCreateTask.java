@@ -1,7 +1,6 @@
 package com.wizecore.ant.vijava;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +61,7 @@ import com.vmware.vim25.mo.VirtualMachine;
  * This can be a part of &lt;vm&gt; set of task (to perform a series of vm operations)
  * or can be run on it`s own.
  * 
+ * @ant.task name="vmCreate" category="vmCreate"
  * @author huksley
  */
 public class VMCreateTask extends AbstractVMTask {

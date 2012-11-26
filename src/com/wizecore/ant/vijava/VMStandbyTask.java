@@ -10,6 +10,12 @@ import com.vmware.vim25.mo.ServiceInstance;
 import com.vmware.vim25.mo.VirtualMachine;
 
 
+/**
+ * Puts virtual machine in standby.
+ * 
+ * @ant.task name="vmStandby" category="vmStandby"
+ * @author huksley
+ */
 public class VMStandbyTask extends AbstractVMTask {
 
 	String vm;
@@ -40,16 +46,15 @@ public class VMStandbyTask extends AbstractVMTask {
 			throw new BuildException(e);
 		}
 	}
-
-	/**
-	 * Getter for {@link VMStandbyTask#vm}.
-	 */
+	
 	public String getVm() {
 		return vm;
 	}
 
 	/**
-	 * Setter for {@link VMStandbyTask#vm}.
+	 * Virtual machine name to query for information.
+	 * 
+	 * @ant.required
 	 */
 	public void setVm(String vm) {
 		this.vm = vm;
