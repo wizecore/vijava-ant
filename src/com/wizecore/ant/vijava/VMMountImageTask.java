@@ -22,7 +22,7 @@ import com.vmware.vim25.mo.VirtualMachine;
 import com.vmware.vim25.mox.VirtualMachineDeviceManager;
 
 /**
- * Requests power on of specified virtual machine.
+ * Asks VM to mount specified image.
  * 
  * @ant.task name="vmMountImage" category="vmMountImage"
  * @author huksley
@@ -128,7 +128,7 @@ public class VMMountImageTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMMountImageTask#vm}.
+	 * Virtual machine name.
 	 */
 	public void setVm(String vm) {
 		this.vm = vm;
@@ -142,7 +142,7 @@ public class VMMountImageTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMMountImageTask#wait}.
+	 * Wait for mount to complete. Default is false.
 	 */
 	public void setWait(boolean wait) {
 		this.wait = wait;
@@ -156,7 +156,7 @@ public class VMMountImageTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMMountImageTask#iso}.
+	 * If set, specifies datastore path (i.e. [&lt;datastore-name&gt;] /path/to/iso.iso) to CD-ROM image file to be mounted at CD-ROM drive.
 	 */
 	public void setIso(String iso) {
 		this.iso = iso;
@@ -170,7 +170,7 @@ public class VMMountImageTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMMountImageTask#connected}.
+	 * Connect this CD-ROM in VM. Default is <code>true</code>.
 	 */
 	public void setConnected(boolean connected) {
 		this.connected = connected;
@@ -184,7 +184,7 @@ public class VMMountImageTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMMountImageTask#deviceKey}.
+	 * Device index. Default is 100.
 	 */
 	public void setDeviceKey(int deviceKey) {
 		this.deviceKey = deviceKey;
@@ -198,7 +198,8 @@ public class VMMountImageTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMMountImageTask#datastoreType}.
+	 * Filter for datastores. Default is sanfs.
+	 * This is optional and required only if iso path specified as /path/to/iso.iso. 
 	 */
 	public void setDatastoreType(String datastoreType) {
 		this.datastoreType = datastoreType;

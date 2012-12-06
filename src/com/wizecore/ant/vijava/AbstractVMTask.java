@@ -136,7 +136,7 @@ public class AbstractVMTask extends Task {
 	}
 
 	/**
-	 * Username to connect as. Can be also specified using {@link #credentialsFile}.
+	 * Username to connect as. Can be also specified in <code>credentialsFile=</code>.
 	 * @ant.required 
 	 */
 	public void setUsername(String username) {
@@ -144,14 +144,14 @@ public class AbstractVMTask extends Task {
 	}
 
 	/**
-	 * Getter for {@link AbstractVMTask#password}.
+	 * Getter for <code>password=</code>
 	 */
 	public String getPassword() {
 		return password;
 	}
 
 	/**
-	 * Password for specified user. Can be also specified using {@link #credentialsFile}.
+	 * Password for specified user. Can be also specified in <code>credentialsFile=</code>.
 	 * @ant.required
 	 */
 	public void setPassword(String password) {

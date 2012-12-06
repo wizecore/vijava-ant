@@ -1,7 +1,7 @@
 <project default="build" basedir=".">
 	<property name="source.dir" value="src" />
   	<property name="package.names" value="com.wizecore.ant.vijava" />
-  	<property name="templates.dir" value="lib/antdoclet/apache" />
+  	<property name="templates.dir" value="lib/antdoclet/terse" />
 
 	<path id="doclet.classpath">
 		<pathelement path="build"/>
@@ -22,14 +22,7 @@
 	</path>
 
 	<target name="build">
-		<mkdir dir="doc/tasks"/>		
 		<mkdir dir="build"/>
-		<copy todir="doc/tasks" overwrite="true">
-			<fileset dir="${templates.dir}/html/">
-				<exclude name="*.vm"/>
-			</fileset>
-		</copy>
-
 		<javac target="1.6" srcdir="${source.dir}" destdir="build" classpathref="runtime.classpath"/>
 
 		<jar destfile="vijava-ant.jar">
@@ -37,6 +30,8 @@
 			<fileset dir="${source.dir}" excludes="**/*.java"/>
 		</jar>
   	
+  	    <delete dir="doc/tasks"/>
+		<mkdir dir="doc/tasks"/>
 		<javadoc access="public" sourcepath="${source.dir}" destdir="doc/tasks" 
 			packagenames="${package.names}"
             docletpathref="doclet.classpath"
@@ -50,5 +45,18 @@
 				<param name="-taskscategoryfile" value="lib/none.xml" />
 			</doclet>
 		</javadoc>
+		
+		<copy todir="doc/tasks" overwrite="true">
+			<fileset dir="${templates.dir}/html/">
+				<exclude name="*.vm"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="pdf" if="html2pdf">
+		<exec executable="${html2pdf}">
+			<arg value="file:///${basedir}/doc/tasks/content.html"/>
+		    <arg value="vijava-ant-tasks.pdf"/>
+		</exec>
 	</target>
 </project>

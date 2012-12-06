@@ -1,0 +1,22 @@
+##
+## This template is the entry point for calling other templates.
+## The output of this template goes to stdout.
+##
+## Objects available in context:
+##
+## $velocity   - Helper object for processing other templates (of type VelocityFacade)
+## $antroot   - Contains all the Ant tasks/types (of type AntRoot)
+## $title         - Project title (of type String)
+##
+AntDoclet - Running project $title
+
+#foreach( $taskDoc in $antroot.getAll() )
+#if (!$taskDoc.isIgnored())
+- Processing $taskDoc.antName
+#else
+- Ignoring $taskDoc.fullClassName()
+#end
+#end
+
+$velocity.eval( "html/toc.vm", "toc.html" )
+$velocity.eval( "html/content.vm", "content.html" )

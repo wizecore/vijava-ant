@@ -10,7 +10,7 @@ import com.vmware.vim25.mo.ServiceInstance;
 import com.vmware.vim25.mo.VirtualMachine;
 
 /**
- * Reboots virtual machine. Asks tools to reboot guest OS.
+ * Reboots virtual machine. Asks VMWare Tools to reboot guest OS.
  * 
  * @ant.task name="vmReboot" category="vmReboot"
  * @author huksley

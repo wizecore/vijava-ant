@@ -11,6 +11,7 @@ import com.vmware.vim25.mo.VirtualMachine;
 
 /**
  * Requests power on of specified virtual machine.
+ * It must be power off.
  * 
  * @ant.task name="vmPowerOn" category="vmPowerOn"
  * @author huksley

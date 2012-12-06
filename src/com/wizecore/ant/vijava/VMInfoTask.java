@@ -119,7 +119,7 @@ public class VMInfoTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Property to set to virtual machine IP address.
+	 * <b>Property name</b> to set to virtual machine IP address.
 	 * @ant.not-required
 	 */
 	public void setIpaddress(String ipaddress) {
@@ -134,7 +134,7 @@ public class VMInfoTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Property to set to virtual machine hostname.
+	 * <b>Property name</b> to set to virtual machine hostname.
 	 * @ant.not-required
 	 */
 	public void setGuestHostName(String guestHostName) {
@@ -149,7 +149,7 @@ public class VMInfoTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Property to set to virtual machine datastore.
+	 * <b>Property name</b> to set to virtual machine datastore.
 	 * @ant.not-required
 	 */
 	public void setDatastore(String datastore) {
@@ -164,8 +164,8 @@ public class VMInfoTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Filter for datastores.
-	 * @ant.not-required Default is sanfs.
+	 * Filter for datastores. Default is sanfs.
+	 * @ant.not-required
 	 */
 	public void setDatastoreType(String datastoreType) {
 		this.datastoreType = datastoreType;
@@ -179,7 +179,7 @@ public class VMInfoTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Property to set to virtual machine last event.
+	 * <b>Property name</b> to set to virtual machine last event.
 	 * 
 	 * @ant.not-required
 	 */

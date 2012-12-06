@@ -167,7 +167,7 @@ public class VMWaitTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMWaitTask#timeout}.
+	 * Total wait timeout. Specified in milliseconds. Default is 5 minutes.
 	 */
 	public void setTimeout(long timeout) {
 		this.timeout = timeout;
@@ -181,7 +181,7 @@ public class VMWaitTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMWaitTask#event}.
+	 * Wait for VM for specified event to occur. For example <code>CustomizationSucceeded</code>.
 	 */
 	public void setEvent(String event) {
 		this.event = event;
@@ -195,7 +195,7 @@ public class VMWaitTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMWaitTask#poweredOn}.
+	 * Wait for VM to power on.
 	 */
 	public void setPoweredOn(boolean poweredOn) {
 		this.poweredOn = poweredOn;
@@ -209,7 +209,7 @@ public class VMWaitTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMWaitTask#haveIpAddress}.
+	 * Wait for VM to obtain IP address on first adapter.
 	 */
 	public void setHaveIpAddress(boolean haveIpAddress) {
 		this.haveIpAddress = haveIpAddress;
@@ -223,7 +223,7 @@ public class VMWaitTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMWaitTask#checkTime}.
+	 * Sleep period. Default is 2000.
 	 */
 	public void setCheckTime(long checkTime) {
 		this.checkTime = checkTime;
@@ -237,7 +237,7 @@ public class VMWaitTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMWaitTask#success}.
+	 * <b>Property name</b> to set to <code>true</code> when wait was successfull.
 	 */
 	public void setSuccess(String success) {
 		this.success = success;
@@ -251,7 +251,7 @@ public class VMWaitTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMWaitTask#failed}.
+	 * <b>Property name</b> to set to <code>true</code> when wait have timed out.
 	 */
 	public void setFailed(String failed) {
 		this.failed = failed;
@@ -265,7 +265,7 @@ public class VMWaitTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMWaitTask#poweredOff}.
+	 * Waiting for VM to change state to poweredOff.
 	 */
 	public void setPoweredOff(boolean poweredOff) {
 		this.poweredOff = poweredOff;
@@ -279,7 +279,8 @@ public class VMWaitTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMWaitTask#boot}.
+	 * Wait for VM boot. This actually waits for VMWare Tools service to start. 
+	 * Other services might be not started.
 	 */
 	public void setBoot(boolean boot) {
 		this.boot = boot;
@@ -293,7 +294,7 @@ public class VMWaitTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMWaitTask#guestState}.
+	 * Wait for specified guest state. See <a href="http://pubs.vmware.com/vi3/sdk/ReferenceGuide/vim.vm.GuestInfo.html">list</a> of possible values.
 	 */
 	public void setGuestState(String guestState) {
 		this.guestState = guestState;

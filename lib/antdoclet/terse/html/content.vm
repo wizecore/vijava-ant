@@ -1,0 +1,66 @@
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+
+<h1>$title Documentation</h1>
+
+<table class="table table-condensed">
+	<thead>
+	<tr>
+		<th>Task name</th>
+		<th>Description</th>
+	</tr>
+	</thead>
+	<tbody>
+#foreach($taskDoc in $antroot.getAll())
+#if (!$taskDoc.isIgnored())
+	<tr>
+		<th>
+		<a name="$!taskDoc.getAntCategory()">$!taskDoc.getAntCategory()</a>
+		</th>
+		<td>
+		<div style="text-align: right"><b>$taskDoc.getFullClassName()</b></div>
+		<p style="padding: 0.4em">		
+		$taskDoc.getComment()
+		</p>
+		<p>
+	    <table class="table table-condensed">
+			<tr>
+				<td valign="top" align="left"><b>Attribute</b></td>
+                <td valign="top" align="left"><b>Description</b></td>
+                <td valign="top" align="left"><b>Type</b></td>
+                <td valign="top" align="left"><b>Required?</b></td>
+			</tr>
+
+#foreach ($attr in $taskDoc.attributes )
+
+			<tr>
+    		    <td valign="top" align="left">$attr</td>
+
+                <td valign="top" align="left">
+                     $taskDoc.getAttributeComment($attr)
+                </td>
+
+                <td valign="top" align="left">
+                    $taskDoc.getAttributeType($attr)
+                </td>
+
+                <td valign="top" align="left">
+
+  #if( $taskDoc.getAttributeRequired($attr) )
+                       <b>Yes</b> $taskDoc.getAttributeRequired($attr)
+  #elseif ( $taskDoc.getAttributeNotRequired($attr) )
+                       <b>No</b> $taskDoc.getAttributeNotRequired($attr)
+  #else
+  						<b>No</b>
+  #end
+                </td>
+			</tr>
+#end
+		</table>
+		</p>
+		</dl>
+		</td>
+    </tr>
+	</tbody>
+#end
+#end
+</table>

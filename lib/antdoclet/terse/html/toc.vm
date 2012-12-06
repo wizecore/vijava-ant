@@ -1,0 +1,14 @@
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+
+<p>
+<h3>Defined tasks</h3>
+<ul class="nav nav-list">
+#foreach($taskDoc in $antroot.getAll())
+#if (!$taskDoc.isIgnored())
+<li>
+<a href="content.html#$!taskDoc.getAntCategory()" target="content">$!taskDoc.getAntCategory()</a>
+</li>
+#end
+#end
+</ul>
+</p>

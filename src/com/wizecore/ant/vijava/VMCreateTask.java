@@ -492,7 +492,7 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#resourcePool}.
+	 * Resource pool to create VM in. Optional. If not specified, creates in first available pool.
 	 */
 	public void setResourcePool(String resourcePool) {
 		this.resourcePool = resourcePool;
@@ -506,7 +506,7 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#template}.
+	 * If set, specifies this VM must be cloned from specified template.
 	 */
 	public void setTemplate(String template) {
 		this.template = template;
@@ -520,7 +520,8 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#datastore}.
+	 * Datastore to place VM disk image. Optional. If not specified, 
+	 * VM host will be searched for appropriate datastore, using <code>datastoreType=</code> as filter.
 	 */
 	public void setDatastore(String datastore) {
 		this.datastore = datastore;
@@ -534,7 +535,8 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#datastoreType}.
+	 * Datastore type ot be used in search for space to be created.
+	 * Default is sanfs. Needed if <code>datastore=</code> is not specified.
 	 */
 	public void setDatastoreType(String datastoreType) {
 		this.datastoreType = datastoreType;
@@ -548,7 +550,8 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#vm}.
+	 * Virtual machine name. This is required. 
+	 * @ant.required
 	 */
 	public void setVm(String vm) {
 		this.vm = vm;
@@ -562,7 +565,7 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#wait}.
+	 * Wait for VM to complete creation or cloning from <code>template</code>. 
 	 */
 	public void setWait(boolean wait) {
 		this.wait = wait;
@@ -576,7 +579,7 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#powerOn}.
+	 * Power on VM after creation? If using <code>customization=</code>, this must be set to <code>true</code>.
 	 */
 	public void setPowerOn(boolean powerOn) {
 		this.powerOn = powerOn;
@@ -590,7 +593,7 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#cpu}.
+	 * Number of vCPU to allocate to VM. Default is 1.
 	 */
 	public void setCpu(int cpu) {
 		this.cpu = cpu;
@@ -604,7 +607,7 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#memory}.
+	 * Memory to allocate to VM. Expressed in MB (Megabytes). Default is 1 GB.
 	 */
 	public void setMemory(long memory) {
 		this.memory = memory;
@@ -618,7 +621,8 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#guestType}.
+	 * Type of guest to be created. Only applicable if creating VM from scratch.
+	 * See <a href="http://vijava.sourceforge.net/vSphereAPIDoc/ver5/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html">list</a> of available values.
 	 */
 	public void setGuestType(String guestType) {
 		this.guestType = guestType;
@@ -632,7 +636,8 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#diskSize}.
+	 * Hard disk size to create. Specified in MB (Megabytes). Default is 10 GB.
+	 * Only applicable if creating VM from scratch.
 	 */
 	public void setDiskSize(long diskSize) {
 		this.diskSize = diskSize;
@@ -646,7 +651,7 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#diskMode}.
+	 * Disk mode.  This is VMWare specific. Default is "persistent";
 	 */
 	public void setDiskMode(String diskMode) {
 		this.diskMode = diskMode;
@@ -660,7 +665,7 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#deviceKey}.
+	 * Starting device index. This is VMWare specific. Default is 100.  
 	 */
 	public void setDeviceKey(int deviceKey) {
 		this.deviceKey = deviceKey;
@@ -674,7 +679,7 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#netName}.
+	 * Network name for network adapter. This is VMWare specific. Default is "VM Network". 
 	 */
 	public void setNetName(String netName) {
 		this.netName = netName;
@@ -688,7 +693,7 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#nicName}.
+	 * Network interface adapter name. Default is "NetAdapter 1".
 	 */
 	public void setNicName(String nicName) {
 		this.nicName = nicName;
@@ -702,21 +707,21 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#annotation}.
+	 * Optional annotation for this virtual machine.
 	 */
 	public void setAnnotation(String annotation) {
 		this.annotation = annotation;
 	}
 
 	/**
-	 * Getter for {@link VMCreateTask#iso}.
+	 * If set, specifies datastore path (i.e. [&lt;datastore-name&gt;] /path/to/iso.iso) to CD-ROM image file to be mounted at CD-ROM drive.
 	 */
 	public String getIso() {
 		return iso;
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#iso}.
+	 * If set, specifies datastore path (i.e. [&lt;datastore-name&gt;] /path/to/iso.iso) to CD-ROM image file to be mounted at CD-ROM drive.
 	 */
 	public void setIso(String iso) {
 		this.iso = iso;
@@ -730,7 +735,7 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#bootOrder}.
+	 * Boot device order, specify one of cdrom, disk, net, floppy in comma separated list. Default is disk.
 	 */
 	public void setBootOrder(String bootOrder) {
 		this.bootOrder = bootOrder;
@@ -744,7 +749,7 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#floppyImage}.
+	 * If set, specifies datastore path (i.e. [&lt;datastore-name&gt;] /path/to/diskette.flp) to floppy image file to be mounted at floppy drive (A:)
 	 */
 	public void setFloppyImage(String floppyImage) {
 		this.floppyImage = floppyImage;
@@ -758,7 +763,7 @@ public class VMCreateTask extends AbstractVMTask {
 	}
 
 	/**
-	 * Setter for {@link VMCreateTask#customization}.
+	 * Registered within vCenter customization script to be run.
 	 */
 	public void setCustomization(String customization) {
 		this.customization = customization;

@@ -10,7 +10,8 @@ import com.vmware.vim25.mo.ServiceInstance;
 import com.vmware.vim25.mo.VirtualMachine;
 
 /**
- * Request poweroff of specified virtual machine.
+ * Request immediate PowerOff of specified virtual machine.
+ * This will not wait for OS to shutdown.
  * 
  * @ant.task name="vmPowerOff" category="vmPowerOff"
  * @author huksley

@@ -11,7 +11,7 @@ import com.vmware.vim25.mo.VirtualMachine;
 
 
 /**
- * Shutdowns guest. All unsaved data will be lost.
+ * Shutdowns guest. Asks VMWare tools to shutdown guest.
  * 
  * @ant.task name="vmShutdown" category="vmShutdown"
  * @author huksley

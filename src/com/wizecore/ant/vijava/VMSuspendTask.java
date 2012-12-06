@@ -10,7 +10,7 @@ import com.vmware.vim25.mo.ServiceInstance;
 import com.vmware.vim25.mo.VirtualMachine;
 
 /**
- * Suspends virtual machine.
+ * Suspends virtual machine. 
  * 
  * @ant.task name="vmSuspend" category="vmSuspend"
  * @author huksley
