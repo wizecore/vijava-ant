@@ -18,5 +18,7 @@ Examples
 ========
 
 `<vm vcenter="test1" username="buildbot" password="123">`
+
 `  <vmCreate vm="testvm1" host="test1host1"/>`
+
 `</vm>`
