@@ -14,7 +14,7 @@
 #if (!$taskDoc.isIgnored())
 	<tr>
 		<th>
-		<a name="$!taskDoc.getAntCategory()">$!taskDoc.getAntCategory()</a>
+		<h2><a name="$!taskDoc.getAntCategory()">$!taskDoc.getAntCategory()</a></h2>
 		</th>
 		<td>
 		<div style="text-align: right"><b>$taskDoc.getFullClassName()</b></div>

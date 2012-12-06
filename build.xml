@@ -29,7 +29,9 @@
 			<fileset dir="build" />
 			<fileset dir="${source.dir}" excludes="**/*.java"/>
 		</jar>
-  	
+	</target>
+
+	<target name="javadoc">
   	    <delete dir="doc/tasks"/>
 		<mkdir dir="doc/tasks"/>
 		<javadoc access="public" sourcepath="${source.dir}" destdir="doc/tasks" 
@@ -55,6 +57,8 @@
 
 	<target name="pdf" if="html2pdf">
 		<exec executable="${html2pdf}">
+			<arg value="--enable-external-links"/>
+			<arg value="--enable-internal-links"/>
 			<arg value="file:///${basedir}/doc/tasks/content.html"/>
 		    <arg value="vijava-ant-tasks.pdf"/>
 		</exec>
