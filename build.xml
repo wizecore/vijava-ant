@@ -5,9 +5,11 @@
 
 	<path id="doclet.classpath">
 		<pathelement path="build"/>
+
 		<fileset dir="lib">
 			<include name="*.jar"/>
 		</fileset>
+
 		<fileset dir="lib/antdoclet/lib">
 			<include name="*.jar"/>
 		</fileset>
@@ -26,6 +28,13 @@
 				<exclude name="*.vm"/>
 			</fileset>
 		</copy>
+
+		<javac target="1.6" srcdir="${source.dir}" destdir="build" classpathref="dependency.classpath"/>
+
+		<jar destfile="vijava-ant.jar">
+			<fileset dir="build" />
+			<fileset dir="${source.dir}" excludes="**/*.java"/>
+		</jar>
   	
 		<javadoc access="public" sourcepath="${source.dir}" destdir="doc/tasks" 
 			packagenames="${package.names}"

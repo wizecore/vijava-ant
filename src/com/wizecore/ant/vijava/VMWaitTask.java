@@ -9,6 +9,7 @@ import com.vmware.vim25.EventFilterSpec;
 import com.vmware.vim25.EventFilterSpecByEntity;
 import com.vmware.vim25.EventFilterSpecRecursionOption;
 import com.vmware.vim25.VirtualMachinePowerState;
+import com.vmware.vim25.VirtualMachineToolsStatus;
 import com.vmware.vim25.mo.EventManager;
 import com.vmware.vim25.mo.Folder;
 import com.vmware.vim25.mo.InventoryNavigator;
@@ -28,7 +29,9 @@ public class VMWaitTask extends AbstractVMTask {
 	boolean poweredOn;
 	boolean poweredOff;
 	boolean haveIpAddress;
+	boolean boot;
 	long checkTime = 2000;
+	String guestState;
 	String success;
 	String failed;
 	
@@ -96,6 +99,21 @@ public class VMWaitTask extends AbstractVMTask {
 						allMet = allMet && (ip != null && !ip.equals(""));
 						if (allMet) {
 							log.info("Got ip " + ip);
+						}
+					}
+					if (allMet && boot) {
+						VirtualMachineToolsStatus st = target.getGuest().getToolsStatus();
+						allMet = allMet && (st == VirtualMachineToolsStatus.toolsOk || st == VirtualMachineToolsStatus.toolsOld);
+						if (allMet) {
+							log.info("Boot complete (tools running)");
+						}
+					}
+					
+					if (allMet && guestState != null) {
+						String st = target.getGuest().getGuestState();
+						allMet = allMet && (st.equalsIgnoreCase(guestState.trim()));
+						if (allMet) {
+							log.info("Guest state " + st);
 						}
 					}
 					
@@ -251,5 +269,33 @@ public class VMWaitTask extends AbstractVMTask {
 	 */
 	public void setPoweredOff(boolean poweredOff) {
 		this.poweredOff = poweredOff;
+	}
+
+	/**
+	 * Getter for {@link VMWaitTask#boot}.
+	 */
+	public boolean isBoot() {
+		return boot;
+	}
+
+	/**
+	 * Setter for {@link VMWaitTask#boot}.
+	 */
+	public void setBoot(boolean boot) {
+		this.boot = boot;
+	}
+
+	/**
+	 * Getter for {@link VMWaitTask#guestState}.
+	 */
+	public String getGuestState() {
+		return guestState;
+	}
+
+	/**
+	 * Setter for {@link VMWaitTask#guestState}.
+	 */
+	public void setGuestState(String guestState) {
+		this.guestState = guestState;
 	}
 }
