@@ -37,7 +37,7 @@ public class VMDestroyTask extends AbstractVMTask {
 					throw new BuildException("Unknown virtual machine: " + vm);
 				}
 				
-				log.info("Powering off VM " + vm);
+				log.info("Destroying VM " + vm);
 				runTask(target.destroy_Task(), wait);
 			} finally {
 				closeServerInstance(si);
